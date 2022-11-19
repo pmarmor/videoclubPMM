@@ -45,7 +45,7 @@ class Soporte
         return $this->precio+($this->precio*self::IVA);
     }
     public function muestraResumen(){
-        echo "Título de la película: ".$this->titulo."<br>Número: ".$this->numero."<br>Precio: ".$this->getPrecioConIva();
+        echo "<br>Título: ".$this->titulo."<br>Número: ".$this->numero."<br>Precio: ".$this->getPrecioConIva();
 }
 
 }
