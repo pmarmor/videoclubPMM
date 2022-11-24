@@ -37,6 +37,7 @@ private int $numsocios=0;
     public function alquilaSocioProducto(int $nroCliente, int $nroSoporte){
         $soporte=$this->productos[$nroSoporte];
     $this->socios[$nroCliente]->alquilar($soporte);
+    return $this;
     }
     private function incluirProducto( Soporte $soporte){
        array_push( $this->productos,$soporte);

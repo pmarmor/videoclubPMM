@@ -30,3 +30,10 @@ $vc->alquilaSocioProducto(1,6);
 
 //listo los socios
 $vc->listarSocios();
+//ENCADENAMIENTO DE MÉTODOS
+$soporte1 = new CintaVideo("Los cazafantasmas", 23, 3.5, 107);
+$cliente1 = new Cliente("Bruce Wayne", 23);
+echo "<br><br><br><br>MÉTODOS ENCADENADOS";
+echo "<br>";
+$cliente1->alquilar($soporte1)->muestraResumen();
+$vc->alquilaSocioProducto(1,2)->listarSocios();

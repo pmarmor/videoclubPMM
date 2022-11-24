@@ -50,7 +50,7 @@ private int $maxAlquilerConcurrente;
      */
     public function muestraResumen(){
         $this->numSoportesAlquilados=count($this->soportesAlquilados);
-        echo ("<br>Nombre: ".$this->nombre."<br>"."Cantidad de alquileres".count($this->soportesAlquilados));
+        echo ("<br>Nombre: ".$this->nombre."<br>"."Cantidad de alquileres: ".count($this->soportesAlquilados));
     }
 
     /**
@@ -74,19 +74,19 @@ private int $maxAlquilerConcurrente;
      * @return bool
      * @throws Exception
      */
-    public function alquilar(Soporte $s): bool{
+    public function alquilar(Soporte $s){
         if (self:: tieneAlquilado($s)){
             echo('<br>El soporte ya está alquilado');
-            return false;
+            return $this;
         }
         elseif(count($this->soportesAlquilados)>=$this->maxAlquilerConcurrente){
             echo('<br>Cupo de alquiler alcanzado');
-            return false;
+            return $this;
         }
         else {
             array_push($this->soportesAlquilados, $s);
             echo "<br>Soporte con número ".$s->getNumero()." añadido";
-            return true;
+            return $this;
             }
 
         }
