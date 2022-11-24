@@ -1,5 +1,8 @@
 <?php
-abstract class Soporte
+interface Resumible{
+    public function muestraResumen();
+}
+abstract class Soporte implements Resumible
 {
     private const IVA=0.21;
     public string $titulo;
