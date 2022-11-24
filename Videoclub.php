@@ -35,9 +35,13 @@ private int $numsocios=0;
         echo "<br>FIN DE LA LISTA<br>";
     }
     public function alquilaSocioProducto(int $nroCliente, int $nroSoporte){
-        $soporte=$this->productos[$nroSoporte];
-    $this->socios[$nroCliente]->alquilar($soporte);
-    return $this;
+        try {
+            $soporte=$this->productos[$nroSoporte];
+            $this->socios[$nroCliente]->alquilar($soporte);
+            return $this;
+        }catch (Exception $exception){
+            echo "No se ha podido alquilar soporte";
+        }
     }
     private function incluirProducto( Soporte $soporte){
        array_push( $this->productos,$soporte);

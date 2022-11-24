@@ -75,20 +75,24 @@ private int $maxAlquilerConcurrente;
      * @throws Exception
      */
     public function alquilar(Soporte $s){
-        if (self:: tieneAlquilado($s)){
-            echo('<br>El soporte ya está alquilado');
-            return $this;
-        }
-        elseif(count($this->soportesAlquilados)>=$this->maxAlquilerConcurrente){
-            echo('<br>Cupo de alquiler alcanzado');
-            return $this;
-        }
-        else {
-            array_push($this->soportesAlquilados, $s);
-            echo "<br>Soporte con número ".$s->getNumero()." añadido";
-            return $this;
+        try {
+            if (self:: tieneAlquilado($s)){
+                echo('<br>El soporte ya está alquilado');
+                return $this;
+            }
+            elseif(count($this->soportesAlquilados)>=$this->maxAlquilerConcurrente){
+                echo('<br>Cupo de alquiler alcanzado');
+                return $this;
+            }
+            else {
+                array_push($this->soportesAlquilados, $s);
+                echo "<br>Soporte con número ".$s->getNumero()." añadido";
+                return $this;
             }
 
+        }catch (Exception $exception){
+            echo "Error: no se ha podido alquilar el soporte";
+        }
         }
 
     public function devolver(int $numSoporte): bool{
