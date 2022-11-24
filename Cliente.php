@@ -93,7 +93,7 @@ private int $maxAlquilerConcurrente;
 
     public function devolver(int $numSoporte): bool{
         $nro=0;
-    $s=new Soporte("_",$numSoporte,0);
+    $s=new Dvd("_",$numSoporte,0,"-","-");
         if (self::tieneAlquilado($s)){
           for ($i=0;$i<count($this->soportesAlquilados);$i++){
             if ($numSoporte==$this->soportesAlquilados[$i]->getNumero()){
