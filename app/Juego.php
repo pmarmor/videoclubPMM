@@ -1,5 +1,5 @@
 <?php
-namespace ProyectoVideoclub;
+namespace app;
 class Juego extends Soporte
 {
     public  string $consola;

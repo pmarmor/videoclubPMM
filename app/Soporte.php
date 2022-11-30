@@ -1,5 +1,5 @@
 <?php
-namespace ProyectoVideoclub;
+namespace app;
 interface Resumible{
     public function muestraResumen();
 }

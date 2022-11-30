@@ -1,5 +1,5 @@
 <?php
-namespace ProyectoVideoclub;
+namespace app;
 class Dvd extends Soporte
 {
     public string $idioma;

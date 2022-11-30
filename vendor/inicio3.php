@@ -1,7 +1,7 @@
 <?php
-include_once "ProyectoVideoclub/Videoclub.php"; // No incluimos nada más
-include_once "ProyectoVideoclub/CintaVideo.php";
-include_once "ProyectoVideoclub/Cliente.php";
+include_once "app/Videoclub.php"; // No incluimos nada más
+include_once "app/CintaVideo.php";
+include_once "app/Cliente.php";
 use ProyectoVideoclub\Videoclub;
 use ProyectoVideoclub\CintaVideo;
 use ProyectoVideoclub\Cliente;

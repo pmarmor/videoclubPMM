@@ -1,14 +1,14 @@
 <?php
-namespace ProyectoVideoclub;
+namespace app ;
 include("Soporte.php");
 include("Juego.php");
 include("CintaVideo.php");
 include("Cliente.php");
 
-use ProyectoVideoclub\Soporte;
-use ProyectoVideoclub\Juego;
-use ProyectoVideoclub\CintaVideo;
-use ProyectoVideoclub\Cliente;
+use app\Soporte;
+use app\Juego;
+use app\CintaVideo;
+use app\Cliente;
 class Videoclub
 {
 private string $nombre;

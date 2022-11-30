@@ -1,5 +1,5 @@
 <?php
-namespace ProyectoVideoclub;
+namespace app;
 class CintaVideo extends Soporte
 {
 private string $duracion;
