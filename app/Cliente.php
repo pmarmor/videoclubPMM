@@ -78,38 +78,42 @@ private int $maxAlquilerConcurrente;
         try {
             if (self:: tieneAlquilado($s)){
                 echo('<br>El soporte ya está alquilado');
-                return $this;
+                throw new \Exception("Error: el soporte ya está alquilado");
             }
             elseif(count($this->soportesAlquilados)>=$this->maxAlquilerConcurrente){
                 echo('<br>Cupo de alquiler alcanzado');
-                return $this;
+                return false;
             }
             else {
                 array_push($this->soportesAlquilados, $s);
                 echo "<br>Soporte con número ".$s->getNumero()." añadido";
-                return $this;
+                return true;
             }
 
         }catch (Exception $exception){
-            echo "Error: no se ha podido alquilar el soporte";
+            echo $exception->getMessage();
         }
         }
 
-    public function devolver(int $numSoporte): bool{
-        $nro=0;
-    $s=new Dvd("_",$numSoporte,0,"-","-");
-        if (self::tieneAlquilado($s)){
-          for ($i=0;$i<count($this->soportesAlquilados);$i++){
-            if ($numSoporte==$this->soportesAlquilados[$i]->getNumero()){
-                $nro=$i;
+    public function devolver(int $numSoporte){
+        try {
+            $nro=0;
+            $s=new Dvd("_",$numSoporte,0,"-","-");
+            if (self::tieneAlquilado($s)){
+                for ($i=0;$i<count($this->soportesAlquilados);$i++){
+                    if ($numSoporte==$this->soportesAlquilados[$i]->getNumero()){
+                        $nro=$i;
+                    }
+                }
+                array_splice(   $this->soportesAlquilados,$nro,1);
+                echo "<br>"."soporte devuelto";
+                return true;
             }
-          }
-         array_splice(   $this->soportesAlquilados,$nro,1);
-          echo "<br>"."soporte devuelto";
-            return true;
+            echo "<br>No tienes alquilado ese soporte";
+            throw new Exception ("Error: el cliente no tiene el soporte alquilado");
+        }catch (Exception $exception){
+             $exception->getMessage();
         }
-        echo "<br>No tienes alquilado ese soporte";
-        return false;
     }
     public function listaAlquileres(): void{
         echo "<br>Soportes alquilados: ".count($this->soportesAlquilados);

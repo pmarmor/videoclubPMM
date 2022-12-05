@@ -42,11 +42,17 @@ private int $numsocios=0;
     }
     public function alquilaSocioProducto(int $nroCliente, int $nroSoporte){
         try {
+            if ($nroSoporte>count($this->productos)){
+                throw new \Exception("No se ha encontrado el soporte");
+            }
+            if ($nroSoporte>count($this->productos)){
+                throw new \Exception("No se ha podido alguilar el soporte");
+            }
             $soporte=$this->productos[$nroSoporte];
             $this->socios[$nroCliente]->alquilar($soporte);
             return $this;
         }catch (Exception $exception){
-            echo "No se ha podido alquilar soporte";
+            echo $exception->getMessage();
         }
     }
     private function incluirProducto( Soporte $soporte){
