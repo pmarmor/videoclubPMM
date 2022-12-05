@@ -81,7 +81,7 @@ private int $maxAlquilerConcurrente;
                 throw new \Exception("Error: el soporte ya está alquilado");
             }
             elseif(count($this->soportesAlquilados)>=$this->maxAlquilerConcurrente){
-                echo('<br>Cupo de alquiler alcanzado');
+                throw new \Exception("Error: cupo de alquiler alcanzado");
                 return false;
             }
             else {
