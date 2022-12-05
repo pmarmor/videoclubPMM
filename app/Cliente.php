@@ -109,8 +109,9 @@ private int $maxAlquilerConcurrente;
                 echo "<br>"."soporte devuelto";
                 return true;
             }
-            echo "<br>No tienes alquilado ese soporte";
-            throw new Exception ("Error: el cliente no tiene el soporte alquilado");
+            else {
+                throw new Exception ("Error: el cliente no tiene el soporte alquilado");
+            }
         }catch (Exception $exception){
              $exception->getMessage();
         }
