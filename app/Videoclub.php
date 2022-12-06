@@ -16,6 +16,33 @@ private array $productos=array();
 private int $numProductos=0;
 private array $socios=array();
 private int $numsocios=0;
+private int $numProductosAlquilados=0;
+private int $numTotalAlquileres=0;
+
+public function setNumProductosAlquilados(){
+    foreach ($this->productos as $soporte) {
+       if ($soporte->alquilado==true){
+           $this->numProductosAlquilados=$this->numProductosAlquilados+1;
+       }
+    }
+}
+
+    /**
+     * @return int
+     */
+    public function getNumProductosAlquilados(): int
+    {
+        $this->setNumProductosAlquilados();
+        return $this->numProductosAlquilados;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumTotalAlquileres(): int
+    {
+        return $this->numTotalAlquileres;
+    }
 
     /**
      * @param string $nombre

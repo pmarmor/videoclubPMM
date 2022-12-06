@@ -9,6 +9,7 @@ abstract class Soporte implements Resumible
     public string $titulo;
     protected int $numero;
     private float $precio;
+    public bool $alquilado=false;
 
     /**
      * @param string $titulo

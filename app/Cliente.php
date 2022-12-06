@@ -85,7 +85,9 @@ private int $maxAlquilerConcurrente;
                 return false;
             }
             else {
+                $s->alquilado=true;
                 array_push($this->soportesAlquilados, $s);
+
                 echo "<br>Soporte con número ".$s->getNumero()." añadido";
                 return true;
             }
@@ -105,12 +107,13 @@ private int $maxAlquilerConcurrente;
                         $nro=$i;
                     }
                 }
+                $this->soportesAlquilados[$nro]->alquilado=false;
                 array_splice(   $this->soportesAlquilados,$nro,1);
                 echo "<br>"."soporte devuelto";
                 return true;
             }
             else {
-                throw new Exception ("Error: el cliente no tiene el soporte alquilado");
+                throw new \Exception ("Error: el cliente no tiene el soporte alquilado");
             }
         }catch (Exception $exception){
              $exception->getMessage();
