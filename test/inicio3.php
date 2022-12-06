@@ -21,8 +21,12 @@ $vc->listarProductos();
 $vc->incluirSocio("Amancio Ortega");
 $vc->incluirSocio("Pablo Picasso", 2);
 
-$vc->alquilaSocioProducto(1,2);
-$vc->alquilaSocioProducto(1,3);
+    //$vc->alquilaSocioProducto(1,2);
+    //$vc->devolverSocioProducto(1, 2);
+//$vc->alquilaSocioProducto(1,3);
+$array=[2,3];
+$vc->alquilarSocioProductos(1,$array);
+$vc->devolverSocioProductos(1,$array);
 //alquilo otra vez el soporte 2 al socio 1.
 // no debe dejarme porque ya lo tiene alquilado
     //$vc->alquilaSocioProducto(1,2);

@@ -1,10 +1,6 @@
 <?php
 namespace app ;
-include("Soporte.php");
-include("Juego.php");
-include("CintaVideo.php");
-include("Cliente.php");
-
+include ("..\autoload.php");
 use app\Soporte;
 use app\Juego;
 use app\CintaVideo;
@@ -13,9 +9,9 @@ class Videoclub
 {
 private string $nombre;
 private array $productos=array();
-private int $numProductos=0;
+private int $numProductos=-1;
 private array $socios=array();
-private int $numsocios=0;
+private int $numsocios=-1;
 private int $numProductosAlquilados=0;
 private int $numTotalAlquileres=0;
 
@@ -67,6 +63,34 @@ public function setNumProductosAlquilados(){
         }
         echo "<br>FIN DE LA LISTA<br>";
     }
+public function devolverSocioProducto(int $numSocio, int $numeroProducto){
+    try {
+        if ($numeroProducto>count($this->productos)){
+            throw new \Exception("No se ha encontrado el soporte");
+        }
+        if ($numeroProducto>count($this->productos)){
+            throw new \Exception("No se ha podido alguilar el soporte");
+        }
+        $this->socios[$numSocio]->devolver($numeroProducto);
+    }catch (Exception $exception){
+        echo $exception->getMessage();
+    }
+}
+    public function devolverSocioProductos(int $numSocio, array $numeroProductos){
+        foreach ($numeroProductos as $nro) {
+            try {
+                if ($nro>count($this->productos)){
+                    throw new \Exception("No se ha encontrado el soporte");
+                }
+                if ($nro>count($this->productos)){
+                    throw new \Exception("No se ha podido alguilar el soporte");
+                }
+                $this->socios[$numSocio]->devolver($nro);
+            }catch (Exception $exception){
+                echo $exception->getMessage();
+            }
+        }
+    }
     public function alquilaSocioProducto(int $nroCliente, int $nroSoporte){
         try {
             if ($nroSoporte>count($this->productos)){
@@ -82,6 +106,24 @@ public function setNumProductosAlquilados(){
             echo $exception->getMessage();
         }
     }
+    public function alquilarSocioProductos(int $numSocio, array $numerosProductos){
+        foreach ($numerosProductos as $nroSoporte) {
+            try {
+                if ($numSocio>count($this->productos)){
+                    throw new \Exception("No se ha encontrado el soporte");
+                }
+                if ($this->numsocios>count($this->productos)){
+                    throw new \Exception("No se ha podido alguilar el soporte");
+                }
+                $soporte=$this->productos[$nroSoporte];
+                $this->socios[$numSocio]->alquilar($soporte);
+
+            }catch (Exception $exception){
+                echo $exception->getMessage();
+            }
+            }
+        }
+
     private function incluirProducto( Soporte $soporte){
        array_push( $this->productos,$soporte);
     }

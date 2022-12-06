@@ -108,8 +108,9 @@ private int $maxAlquilerConcurrente;
                     }
                 }
                 $this->soportesAlquilados[$nro]->alquilado=false;
+                $nombre=$this->soportesAlquilados[$nro]->getTitulo();
+                echo "<br>soporte ".'"'.$nombre.'"'." devuelto";
                 array_splice(   $this->soportesAlquilados,$nro,1);
-                echo "<br>"."soporte devuelto";
                 return true;
             }
             else {
