@@ -1,9 +1,10 @@
 <?php
-include "Soporte.php";
-include_once "CintaVideo.php";
-include_once "Dvd.php";
-include_once "Juego.php";
-include_once "Cliente.php";
+include ("..\autoload.php");
+use app\DVD;
+use app\CintaVideo;
+use app\Cliente;
+use app\Juego;
+
 
 //instanciamos un par de objetos cliente
 $cliente1 = new Cliente("Bruce Wayne", 23);
@@ -25,10 +26,10 @@ $cliente1->alquilar($soporte2);
 $cliente1->alquilar($soporte3);
 
 //voy a intentar alquilar de nuevo un soporte que ya tiene alquilado
-$cliente1->alquilar($soporte1);
+    //$cliente1->alquilar($soporte1);
 //el cliente tiene 3 soportes en alquiler como máximo
 //este soporte no lo va a poder alquilar
-$cliente1->alquilar($soporte4);
+    //$cliente1->alquilar($soporte4);
 //este soporte no lo tiene alquilado
 $cliente1->devolver(4);
 //devuelvo un soporte que sí que tiene alquilado
