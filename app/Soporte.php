@@ -50,7 +50,11 @@ abstract class Soporte implements Resumible
         return $this->precio+($this->precio*self::IVA);
     }
     public function muestraResumen(){
-        echo "<br>Título: ".$this->titulo."<br>Número: ".$this->numero."<br>Precio: ".$this->getPrecioConIva();
+        $alquilado="No";
+        if ($this->alquilado){
+            $alquilado="Sí";
+        }
+        echo "<br>Título: ".$this->titulo."<br>Número: ".$this->numero."<br>Precio: ".$this->getPrecioConIva()."<br>Alquilado: ".$alquilado;
 }
 
 }

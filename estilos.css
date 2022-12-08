@@ -1,0 +1,23 @@
+fieldset {
+    border: solid dodgerblue 5px;
+    width: fit-content;
+    background-color: whitesmoke;
+    margin-left: auto;
+    margin-right: auto;
+}
+legend{
+    border: solid dodgerblue 5px;
+    width: fit-content;
+    background-color: whitesmoke;
+    font-weight: bold;
+}
+#boton{
+    margin-left: 95px;
+
+}
+#error{
+    color: red;
+    font-weight: bold;
+    text-shadow: red 0px 0px 0px;
+    text-align: center ;
+}

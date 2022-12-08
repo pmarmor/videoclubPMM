@@ -1,10 +1,5 @@
 <?php
 namespace app ;
-include ("..\autoload.php");
-use app\Soporte;
-use app\Juego;
-use app\CintaVideo;
-use app\Cliente;
 class Videoclub
 {
 private string $nombre;
@@ -22,6 +17,14 @@ public function setNumProductosAlquilados(){
        }
     }
 }
+
+    /**
+     * @return array
+     */
+    public function getSocios(): array
+    {
+        return $this->socios;
+    }
 
     /**
      * @return int
@@ -56,7 +59,7 @@ public function setNumProductosAlquilados(){
         echo "<br>FIN DE LA LISTA<br>";
     }
     public function listarSocios(){
-        echo "<br>LISTA DE SOCIOS<br>";
+        echo "LISTA DE SOCIOS<br>";
         foreach ($this->socios as $socio) {
             $socio->muestraResumen();
             echo "<br>";
