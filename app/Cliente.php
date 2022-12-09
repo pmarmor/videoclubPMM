@@ -11,17 +11,36 @@ private int $numSoportesAlquilados;
 private int $maxAlquilerConcurrente;
 
     /**
+     * @return string
+     */
+    public function getUsuario(): string
+    {
+        return $this->usuario;
+    }
+
+    /**
      * @param string $nombre
      * @param int $numero
      * @param int $maxAlquilerConcurrente
      */
-    public function __construct(string $nombre, int $numero, int $maxAlquilerConcurrente=3,$usuario,$contraseña)
+    public function __construct(string $nombre, int $numero, ?int $maxAlquilerConcurrente=3,$usuario,$contraseña)
     {
         $this->nombre = $nombre;
         $this->numero = $numero;
-        $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+        if ($maxAlquilerConcurrente!=null){
+            $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+        }
+        else{$this->maxAlquilerConcurrente=3;}
         $this->usuario=$usuario;
         $this->contraseña=$contraseña;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContraseña(): string
+    {
+        return $this->contraseña;
     }
 
     /**
@@ -62,7 +81,7 @@ private int $maxAlquilerConcurrente;
      */
     public function muestraResumen(){
         $this->numSoportesAlquilados=count($this->soportesAlquilados);
-        echo ("<br>Nombre: ".$this->nombre."<br>Usuario: ".$this->usuario."<br>Máximo de alquileres permitidos: 
+        echo ("<br>Nombre: ".$this->nombre."<br>Usuario: ".$this->usuario."<br>Contraseña: ".$this->contraseña."<br>Máximo de alquileres permitidos: 
         ".$this->maxAlquilerConcurrente);
         echo $this->listaAlquileres();
         echo "<br>--------------";

@@ -1,7 +1,6 @@
 <?php
 if (isset($_SESSION['usuario']) ){
-        $usuario=$_SESSION['usuario'];
-        $contraseña=$_SESSION['contraseña'];
+        $nombre=$_SESSION['nombre'];
     }
 else{  die(header('Location: index.php'));}
 
@@ -16,11 +15,11 @@ else{  die(header('Location: index.php'));}
     <title>Main</title>
 </head>
 <body>
-<p>Hola <?php echo $usuario.'<br>';?>
+<p>Hola <?php echo $nombre.'<br>';?>
 </p>
 <?php if (isset($vc)){
     echo "SOPORTES ALQUILADOS<br>--------------";
-    $array= $vc->getAlquileres($usuario);
+    $array= $vc->getAlquileres($nombre);
     if ($array==null){
         echo "<br>No hay soportes alquilados<br><br>";
     }

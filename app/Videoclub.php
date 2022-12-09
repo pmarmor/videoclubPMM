@@ -150,9 +150,9 @@ public function devolverSocioProducto(int $numSocio, int $numeroProducto){
         $this->incluirProducto($dvd);
 
     }
-    public function incluirSocio(string $nombre, int $maxAlqilerConcurrente=3){
+    public function incluirSocio(string $nombre, ?int $maxAlqilerConcurrente=3,$contraseña,$usuario){
         $this->numsocios=$this->numsocios+1;
-        $socio=new Cliente($nombre,$this->numsocios,$maxAlqilerConcurrente,$nombre,$nombre);
+        $socio=new Cliente($nombre,$this->numsocios,$maxAlqilerConcurrente,$usuario,$contraseña);
         array_push($this->socios,$socio);
     }
     public function getAlquileres(string $cliente){

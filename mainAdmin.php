@@ -1,4 +1,9 @@
 <?php
+use app\Videoclub;
+if (!isset($_SESSION['usuario'])){
+    session_start();
+    include("autoload.php");
+}
 if (!isset($_SESSION['usuario'])){
     header("Location: index.php");
 }
@@ -19,13 +24,19 @@ echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <b
 </head>
 <body>
 <div>
-        <input type="submit" value="Cerrar sesión" name="logout" onclick="window.location.replace('logout.php')">
-    <input type="button" value="Registrar a un nuevo cliente" onclick="window.location.replace('formCreateCliente.php')">
+    <form action="logout.php" method="post">
+        <input type="submit" value="Cerrar sesión" name="logout">
+    </form>
+
+    <form action="formCreateCliente.php" method="post">
+        <input type="submit" value="Registrar a un nuevo cliente"">
+    </form>
 </div>
 <br>
 <section style="display: flex; gap: 20px">
     <div style="border: solid red 5px; padding: 5px; height: fit-content">
         <?php
+        $vc=unserialize($_SESSION['videoclub']);
         if (isset($vc)) {
             echo "<td>" . $vc->listarSocios() . "</td>";
         } ?>

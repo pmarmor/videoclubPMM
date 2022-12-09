@@ -1,9 +1,10 @@
 <?php
+session_start();
 if (!isset($_SESSION['usuario'])){
-    header("Location: index.php");
+    die(header("Location: index.php"));
 }
-if (!$_SESSION['usuario']=="admin"){
-    header("Location: index.php");
+if (isset($_SESSION['usuario'])!="admin"){
+    die(header("Location: index.php"));
 }
 ?>
 <!DOCTYPE html>
@@ -16,11 +17,25 @@ if (!$_SESSION['usuario']=="admin"){
     <title>Main</title>
 </head>
 <body>
-<form action="" method="post">
-    <div>Nombre<input type="text"></div>
-    <div>Usuario<input type="text"></div>
-    <div>Contraseña<input type="text"></div>
-    <div>Alquileres permitidos <input type="number" min="0"></div>
+<form action="createCliente.php" method="post">
+    <table>
+        <tr>
+            <td>Nombre</td> <td><input type="text" name="nombre"></td>
+        </tr>
+        <tr>
+            <td>Usuario</td> <td><input type="text" name="usuario"></td>
+        </tr>
+        <tr>
+            <td>Contraseña</td> <td><input type="text" name="paswd"></td>
+        </tr>
+        <tr>
+            <td>Alquileres permitidos</td> <td><input type="number" name="maxAlq" min="0"></td>
+        </tr>
+    </table>
+    <input type="submit">
+</form>
+<form action="mainAdmin.php" method="post">
+    <input type="submit" value="Volver"">
 </form>
 </body>
 </html>
