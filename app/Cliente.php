@@ -11,6 +11,46 @@ private int $numSoportesAlquilados;
 private int $maxAlquilerConcurrente;
 
     /**
+     * @param string $nombre
+     */
+    public function setNombre(string $nombre): void
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @param string $usuario
+     */
+    public function setUsuario(string $usuario): void
+    {
+        $this->usuario = $usuario;
+    }
+
+    /**
+     * @param string $contraseña
+     */
+    public function setContraseña(string $contraseña): void
+    {
+        $this->contraseña = $contraseña;
+    }
+
+    /**
+     * @param array $soportesAlquilados
+     */
+    public function setSoportesAlquilados(array $soportesAlquilados): void
+    {
+        $this->soportesAlquilados = $soportesAlquilados;
+    }
+
+    /**
+     * @param int $maxAlquilerConcurrente
+     */
+    public function setMaxAlquilerConcurrente(int $maxAlquilerConcurrente): void
+    {
+        $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+    }
+
+    /**
      * @return string
      */
     public function getUsuario(): string

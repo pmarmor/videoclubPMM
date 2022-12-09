@@ -1,7 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['login'])){
-    die(header('Location: main.php'));
+    if ($_SESSION['login']==true){
+        die(header('Location: main.php'));
+    }
 }
 ?>
 <!DOCTYPE html>

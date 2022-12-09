@@ -1,4 +1,7 @@
 <?php
+include "autoload.php";
+if (!isset($_SESSION['usuario'])){
+    session_start();}
 if (isset($_SESSION['usuario']) ){
         $nombre=$_SESSION['nombre'];
     }
@@ -17,7 +20,12 @@ else{  die(header('Location: index.php'));}
 <body>
 <p>Hola <?php echo $nombre.'<br>';?>
 </p>
-<?php if (isset($vc)){
+<form action="formUpdateCliente.php" method="post">
+    <input type="submit" value="Cambiar datos">
+</form>
+<?php
+$vc=unserialize($_SESSION['videoclub']);
+if (isset($vc)){
     echo "SOPORTES ALQUILADOS<br>--------------";
     $array= $vc->getAlquileres($nombre);
     if ($array==null){
@@ -28,7 +36,7 @@ else{  die(header('Location: index.php'));}
         echo "<br>--------------";
     }
 } ?>
-<form action="logout.php" method="get">
+<form action="logout.php" method="post">
     <input type="submit" value="Cerrar sesión" name="logout">
 </form>
 </body>

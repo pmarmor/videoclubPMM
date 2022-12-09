@@ -5,7 +5,7 @@ class Videoclub
 private string $nombre;
 private array $productos=array();
 private int $numProductos=-1;
-private array $socios=array();
+public array $socios=array();
 private int $numsocios=-1;
 private int $numProductosAlquilados=0;
 private int $numTotalAlquileres=0;

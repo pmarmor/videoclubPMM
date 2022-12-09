@@ -10,6 +10,7 @@ if (!isset($_SESSION['usuario'])){
 if (!$_SESSION['usuario']=="admin"){
     header("Location: index.php");
 }
+if(!$_SESSION['sesionAdmin']){header("Location: index.php");}
 echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <br><br>";
 ?>
 
@@ -22,16 +23,31 @@ echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <b
     <link rel="stylesheet" href="estilos.css">
     <title>Main</title>
 </head>
+<style>
+    input{
+        cursor: pointer;
+    }
+    .texto{
+        cursor: text;
+    }
+</style>
 <body>
+<h1>Hola Administrador</h1>
 <div>
     <form action="logout.php" method="post">
         <input type="submit" value="Cerrar sesión" name="logout">
     </form>
-
+<br>
     <form action="formCreateCliente.php" method="post">
         <input type="submit" value="Registrar a un nuevo cliente"">
     </form>
+    <br>
+    <form action="formUpdateCliente.php" method="post">
+        <input type="text" placeholder="Introduce usuario" name="usuario" class="texto">
+        <input type="submit" value="Actualizar datos de cliente">
+    </form>
 </div>
+<div style="color: red; font-weight: bold; font-size: 20px " ><?php  if (isset($error)){echo $error;} ?></div>
 <br>
 <section style="display: flex; gap: 20px">
     <div style="border: solid red 5px; padding: 5px; height: fit-content">

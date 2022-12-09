@@ -44,6 +44,8 @@ if ((isset($_POST["usuario"]) || isset($_POST["contraseña"]))) {
         if ($existe == false) {
             if ($usuarioLogin == "admin" && $contraseñaLogin == "admin") {
                 $_SESSION['usuario'] = $usuarioLogin;
+                $_SESSION['login'] = true;
+                $_SESSION['sesionAdmin'] = true;
                 die(include("mainAdmin.php"));
             }
             $error = 'El usuario no existe';
