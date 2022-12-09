@@ -32,6 +32,7 @@ if ((isset($_POST["usuario"]) || isset($_POST["contraseña"]))) {
         }
         if ($existe==false){
             if ($usuarioLogin=="admin" && $contraseñaLogin=="admin"){
+                $_SESSION['usuario']=$usuarioLogin;
                 die(include("mainAdmin.php"));
             }
             $error='El usuario no existe';
@@ -47,7 +48,7 @@ if ((isset($_POST["usuario"]) || isset($_POST["contraseña"]))) {
                 $_SESSION['usuario']=$usuarioLogin;
                 $_SESSION['contraseña']=$usuarioLogin;
                 $_SESSION['login']=true;
-                die(header('Location: main.php'));
+                die(include('main.php'));
             }
             else{
                 $error='Datos incorrectos';

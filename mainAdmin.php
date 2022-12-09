@@ -1,4 +1,10 @@
 <?php
+if (!isset($_SESSION['usuario'])){
+    header("Location: index.php");
+}
+if (!$_SESSION['usuario']=="admin"){
+    header("Location: index.php");
+}
 echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <br><br>";
 ?>
 
@@ -12,9 +18,11 @@ echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <b
     <title>Main</title>
 </head>
 <body>
-<form action="logout.php" method="get">
-    <input type="submit" value="Cerrar sesión" name="logout">
-</form>
+<div>
+        <input type="submit" value="Cerrar sesión" name="logout" onclick="window.location.replace('logout.php')">
+    <input type="button" value="Registrar a un nuevo cliente" onclick="window.location.replace('formCreateCliente.php')">
+</div>
+<br>
 <section style="display: flex; gap: 20px">
     <div style="border: solid red 5px; padding: 5px; height: fit-content">
         <?php

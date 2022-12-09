@@ -25,6 +25,14 @@ private int $maxAlquilerConcurrente;
     }
 
     /**
+     * @return array
+     */
+    public function getSoportesAlquilados(): array
+    {
+        return $this->soportesAlquilados;
+    }
+
+    /**
      * @return int
      */
     public function getNumero(): int

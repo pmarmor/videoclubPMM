@@ -155,4 +155,14 @@ public function devolverSocioProducto(int $numSocio, int $numeroProducto){
         $socio=new Cliente($nombre,$this->numsocios,$maxAlqilerConcurrente,$nombre,$nombre);
         array_push($this->socios,$socio);
     }
+    public function getAlquileres(string $cliente){
+        $array=array();
+        foreach ($this->socios as $socio){
+            if ($socio->nombre==$cliente){
+                $array=$socio->getSoportesAlquilados();
+            }
+        }
+        return $array;
+
+    }
 }

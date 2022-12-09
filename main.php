@@ -1,7 +1,5 @@
 <?php
-session_start();
 if (isset($_SESSION['usuario']) ){
-
         $usuario=$_SESSION['usuario'];
         $contraseña=$_SESSION['contraseña'];
     }
@@ -20,6 +18,17 @@ else{  die(header('Location: index.php'));}
 <body>
 <p>Hola <?php echo $usuario.'<br>';?>
 </p>
+<?php if (isset($vc)){
+    echo "SOPORTES ALQUILADOS<br>--------------";
+    $array= $vc->getAlquileres($usuario);
+    if ($array==null){
+        echo "<br>No hay soportes alquilados<br><br>";
+    }
+    foreach ($array as $element){
+        echo $element->muestraResumen();
+        echo "<br>--------------";
+    }
+} ?>
 <form action="logout.php" method="get">
     <input type="submit" value="Cerrar sesión" name="logout">
 </form>
