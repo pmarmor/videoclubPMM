@@ -4,6 +4,8 @@ class Cliente
 {
 public string $nombre;
 private int $numero;
+private string $usuario;
+private string $contraseña;
 private array $soportesAlquilados=array();
 private int $numSoportesAlquilados;
 private int $maxAlquilerConcurrente;
@@ -13,11 +15,13 @@ private int $maxAlquilerConcurrente;
      * @param int $numero
      * @param int $maxAlquilerConcurrente
      */
-    public function __construct(string $nombre, int $numero, int $maxAlquilerConcurrente=3)
+    public function __construct(string $nombre, int $numero, int $maxAlquilerConcurrente=3,$usuario,$contraseña)
     {
         $this->nombre = $nombre;
         $this->numero = $numero;
         $this->maxAlquilerConcurrente = $maxAlquilerConcurrente;
+        $this->usuario=$usuario;
+        $this->contraseña=$contraseña;
     }
 
     /**
@@ -50,7 +54,10 @@ private int $maxAlquilerConcurrente;
      */
     public function muestraResumen(){
         $this->numSoportesAlquilados=count($this->soportesAlquilados);
-        echo ("<br>Nombre: ".$this->nombre."<br>"."Cantidad de alquileres: ".count($this->soportesAlquilados));
+        echo ("<br>Nombre: ".$this->nombre."<br>Usuario: ".$this->usuario."<br>Máximo de alquileres permitidos: 
+        ".$this->maxAlquilerConcurrente);
+        echo $this->listaAlquileres();
+        echo "<br>--------------";
     }
 
     /**
@@ -88,7 +95,7 @@ private int $maxAlquilerConcurrente;
                 $s->alquilado=true;
                 array_push($this->soportesAlquilados, $s);
 
-                echo "<br>Soporte con número ".$s->getNumero()." añadido";
+                echo "<script>console.log("."'"."Soporte con número ".$s->getNumero()." añadido')</script>";
                 return true;
             }
 
@@ -109,7 +116,7 @@ private int $maxAlquilerConcurrente;
                 }
                 $this->soportesAlquilados[$nro]->alquilado=false;
                 $nombre=$this->soportesAlquilados[$nro]->getTitulo();
-                echo "<br>soporte ".'"'.$nombre.'"'." devuelto";
+                echo "<script>console.log("."'"."Soporte con número ".$s->getNumero()." devuelto')</script>";
                 array_splice(   $this->soportesAlquilados,$nro,1);
                 return true;
             }

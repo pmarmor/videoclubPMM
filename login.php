@@ -12,6 +12,7 @@ $vc->incluirCintaVideo("Los cazafantasmas", 3.5, 107);
 $vc->incluirCintaVideo("El nombre de la Rosa", 1.5, 140);
 $vc->incluirSocio("Amancio Ortega");
 $vc->incluirSocio("Pablo Picasso", 2);
+$vc->alquilaSocioProducto(1,2);
 
 //
 //EN CASO DE EXISTIR UN USUARIO O CONTRASEÑA, SE REALIZARÁ LA COMPROBACIÓN
