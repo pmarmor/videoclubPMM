@@ -11,7 +11,7 @@ if (!$_SESSION['usuario']=="admin"){
     header("Location: index.php");
 }
 if(!$_SESSION['sesionAdmin']){header("Location: index.php");}
-echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <br><br>";
+
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +46,11 @@ echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <b
         <input type="text" placeholder="Introduce usuario" name="usuario" class="texto">
         <input type="submit" value="Actualizar datos de cliente">
     </form>
+    <form action="removeCliente.php" method="post">
+        <input type="text" placeholder="Introduce usuario" name="usuario" class="texto" >
+        <input type="button" value="Confirmar usuario" onclick="activaBoton()" >
+        <input type="submit" id="boton" value="Eliminar usuario" disabled style="margin-left:auto">
+    </form>
 </div>
 <div style="color: red; font-weight: bold; font-size: 20px " ><?php  if (isset($error)){echo $error;} ?></div>
 <br>
@@ -64,7 +69,12 @@ echo "<div style='font-size: 20px;font-weight: bold'>Hola administrador</div> <b
         } ?>
     </div>
 </section>
+<script>
+  function  activaBoton(){
+        document.getElementById("boton").disabled = false;
 
+    }
+</script>
 </body>
 </html>
 
