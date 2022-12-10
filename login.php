@@ -32,6 +32,13 @@ if ((isset($_POST["usuario"]) || isset($_POST["contraseña"]))) {
         $usuarioLogin = $_POST['usuario'];
         $contraseñaLogin = $_POST['contraseña'];
 
+        $listaUsuarios=leeFichero();
+        foreach($listaUsuarios as $key => $value)
+        {
+            if ($key!=null){$vc->incluirSocio($key, 3,$value,$key);}
+
+        }
+        $_SESSION['videoclub']=serialize($vc);
         $listaUsuarios = $vc->getSocios();
         $existe = false;
         $posicionUsuario=0;
@@ -48,7 +55,7 @@ if ((isset($_POST["usuario"]) || isset($_POST["contraseña"]))) {
                 $_SESSION['sesionAdmin'] = true;
                 die(include("mainAdmin.php"));
             }
-            $error = 'El usuario no existe';
+            $error = 'Datos incorrectos';
             session_destroy();
             die(include('index.php'));
         }
@@ -85,3 +92,24 @@ else {
     echo(header('Location:index.php'));
 }
 
+/**
+ * LEE EL FICHERO "USUARIOS.TXT" Y DEVUELVE UN ARRAY CON TODOS LOS DATOS
+ * @return array
+ */
+function leeFichero()
+{
+    $usuarios = array();
+    if ($file = fopen("credenciales.txt", "r")) {
+        while (!feof($file)) {
+            $line = fgets($file);
+           if ($line!=null){
+               $str_arr = explode(",", $line);
+               $usuarios[$str_arr[0]] = $str_arr[1];
+           }
+
+
+        }
+        fclose($file);
+    }
+    return $usuarios;
+}
